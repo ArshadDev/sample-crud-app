@@ -1,10 +1,7 @@
 version: '3'
 
 services:
-  sample-crud-springboot-container:
-    image: sample-crud-springboot-docker-compose:1
-    build:
-      context: ./
-      dockerfile: Dockerfile    
+  sample-crud-application:
+    image: java8dev/sample-crud-app-docker-demo:sample-crud-app-docker-demo        
     ports:
       - "8080:8080"
