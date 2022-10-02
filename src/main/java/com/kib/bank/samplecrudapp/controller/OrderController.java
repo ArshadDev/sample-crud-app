@@ -16,11 +16,15 @@ import com.kib.bank.samplecrudapp.model.OrderDetails;
 import com.kib.bank.samplecrudapp.service.OrderService;
 
 @RestController
-@RequestMapping("/api")
 public class OrderController {
 
 	@Autowired
 	private OrderService orderService;
+	
+	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public String welcomeMessage() {
+		return "Welcome to Home Page !!";
+	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/orders", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<OrderDetails>> getAllOrders() {
