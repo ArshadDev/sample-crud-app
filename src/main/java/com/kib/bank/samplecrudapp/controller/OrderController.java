@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,11 +21,6 @@ public class OrderController {
 
 	@Autowired
 	private OrderService orderService;
-
-	@GetMapping("/greeting")
-	public ResponseEntity<String> greeting() {
-		return new ResponseEntity<String>("Hello World!............. Spring Boot is working !!!", HttpStatus.OK);
-	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/orders", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<OrderDetails>> getAllOrders() {
@@ -51,7 +45,7 @@ public class OrderController {
 	@RequestMapping(method = RequestMethod.PUT, value = "/orders", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> updateOrder(@RequestBody OrderDetails order) {
 		OrderDetails updatedOrder = orderService.updateOrder(order);
-		
+
 		if (updatedOrder != null) {
 			return new ResponseEntity<>(updatedOrder, HttpStatus.OK);
 		} else {
@@ -66,6 +60,6 @@ public class OrderController {
 			return new ResponseEntity<>(deleteOrder, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>("Failed to delete Order", HttpStatus.OK);
-		}		
+		}
 	}
 }
