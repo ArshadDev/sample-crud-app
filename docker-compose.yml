@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  sample-crud-springboot-container:
+    image: sample-crud-springboot-docker-compose:1
+    build:
+      context: ./
+      dockerfile: Dockerfile    
+    ports:
+      - "8080:8080"
